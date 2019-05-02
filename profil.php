@@ -37,8 +37,12 @@ if(isset($_GET["ids"]))
 
 	<title><?php echo $vendeur['nom']; ?></title>
 	<meta charset="utf-8">
-	<link href="deco.css" rel="stylesheet" type"text/css"/>
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+	<link rel="stylesheet"href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
+	<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
+	<link rel="stylesheet" type="text/css" href="styles.css">	
+
 	<script type="text/javascript">
 
 		$(document).ready(function(){
@@ -93,14 +97,38 @@ if(isset($_GET["ids"]))
 
 </head>
 <body style="background-image: url(images/<?php echo $vendeur['imagefond']; ?>)">
-	<h2>Profil de <?php echo $vendeur['pseudo']; ?></h2>
-	<img  src="images/<?php echo $vendeur['image']; ?>" align="left" width="100" height="100"/>
+
+
+<a id ="logo" href="accueil.php"><img src="images/logo.png" height="100" width="100"></a>
+	<a id ="panier" href=""><img src="images/panier.png" height="50" width="50"></a>
+	<a  id="compte" href="accueilconnexion.php">Compte</a>
+
+	<nav class="navbar navbar-expand-md">
+		
+		<div class="navbar-collapse" id="main-navigation">
+			
+			<ul class="navbar-nav">
+				<li class="Categorie"><a class="nav-link" href="TD_5.html">Categorie</a></li>
+				<li class="Flash"><a class="nav-link" href="#">Vente Flash</a></li>
+			</ul>
+		</div>
+	</nav>
+
 	
+		<div id="presentation">
+			<h2>Profil de <?php echo $vendeur['pseudo']; ?></h2>
+		<table>
+		<tr><td><img  src="images/<?php echo $vendeur['image']; ?>" align="left" width="100" height="100"/></td>
+		<td><?php echo $vendeur['mail']; ?></td>
+		<td><p>Bienvenue <?php echo $vendeur['prenom']; ?><?php echo $vendeur['nom']; ?></p></td></tr>
+		</table>
+			
+			
+			 
+
+			 
+		</div>
      <div id="container">
-         <p>Bienvenue <?php echo $vendeur['prenom']; ?> <?php echo $vendeur['nom']; ?></p>
-         <br />
-         <?php echo $vendeur['mail']; ?>
-         <br />
          <button id="visualisation" onclick="newElement()">Vos items</button>
          <button id="buttonB" ">Ajouter un livre</button>
 		<button id="buttonM" ">Ajouter une musique</button>

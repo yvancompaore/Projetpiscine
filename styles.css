@@ -41,7 +41,7 @@ body {background: #f2f6e9;}/*---navigation bar ---*/
   	border: 2px solid grey; background-color:grey;
 }
 #compte:hover {color: red;}
-[class*="col-"]
+[class*="col-lg"]
  {
   background-color: grey;
   border: 2px solid grey;
@@ -52,3 +52,39 @@ body {background: #f2f6e9;}/*---navigation bar ---*/
   text-align: center;
   cursor: pointer;
 }
+body
+  {
+    background-size: 100%
+  }
+  #container
+  {
+    position:absolute;
+    left:150;
+    bottom:200;
+  }
+  .ajout
+  {
+    display:none;
+  }
+  #items
+  {
+    position:absolute;
+    left:150;
+    top:250;
+  }
+  .image_supprimer
+  {
+  background-image:url("images/delete.png");
+  background-size: 16px 16px;
+  width:16px;
+  height:22px;
+  }
+
+  #vendeurs 
+  {
+    position:absolute;
+    left:150;
+    top:250;
+
+  }
+
