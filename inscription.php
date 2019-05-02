@@ -15,10 +15,7 @@ if(isset($_POST['validation']))
 	//utilisation de la table de hashage pour le mdp
 	$mdp1=sha1($_POST['mdp1']);
 	$mdp2=sha1($_POST['mdp2']);
-	$v1="iu";
-	$v2="ug";
-	$v3=1;
-	$v4=2;
+	
 
 
 
@@ -36,29 +33,29 @@ if(isset($_POST['validation']))
 							$testmail -> execute(array($email1));
 							$emailexiste= $testmail->rowCount();
 
-
+							if($emailexiste==0)
+							{
 								//verification des mdp
 								if($mdp1== $mdp2)
 									{
 
-										$creationmembre= $bdd -> prepare("INSERT INTO acheteurs(nom,prenom,adresse,mail,pseudo,mdp,typec,numc,nomc,codec)  VALUES(?,?,?,?,?,?,?,?,?,?)");
-										$creationmembre -> execute(array($nom,$prenom,$adresse,$email1,$pseudo,$mdp1,$v1,$v3,$v2,$v4));
+										$creationmembre= $bdd -> prepare("INSERT INTO acheteurs(nom,prenom,adresse,mail,pseudo,mdp)  VALUES(?,?,?,?,?,?)");
+										$creationmembre -> execute(array($nom,$prenom,$adresse,$email1,$pseudo,$mdp1));
 										$erreur ="votre compte a bien été créé <a href=\"connexion.php\"> Se connecter </a> ";
 
 										
 									}
-
 								else
 									{
 										$erreur ="Veuillez ressayer car Mot de passe de sont differents";
 									}
-								}
-
-								else
-								{
-									$erreur =" ce mail existe deja veuillez recommencer";
-								}
 							}
+
+							else
+							{
+								$erreur =" ce mail existe deja veuillez recommencer";
+							}
+						}
 
 					else
 						{
@@ -78,6 +75,7 @@ if(isset($_POST['validation']))
 
 		}
 }
+
 
 ?>
 
