@@ -61,7 +61,7 @@ $bdd = new PDO('mysql:host=localhost;dbname=eceshop', 'root', '');
 		echo $datam["groupe"].'<br>';
 		echo $datam["album"].'<br>';
 		echo $datam["prix"].'€<br>';
-		echo'<a href="ajoutpanier.php?idp='.$datam["id"].'"><button>ajouter au panier</button></a>';
+		echo'<a href="ajoutpanier.php?idm='.$datam["id"].'"><button>ajouter au panier</button></a>';
 		echo'</td>';
 		}
 		echo'</tr>';
@@ -85,7 +85,7 @@ $bdd = new PDO('mysql:host=localhost;dbname=eceshop', 'root', '');
 		echo $datal["auteur"].'<br>';
 		echo $datal["editeur"].'<br>';
 		echo $datal["prix"].'€<br>';
-		echo'<a href=""><button>ajouter au panier</button></a>';
+		echo'<a href="ajoutpanier.php?idl='.$datal["id"].'"><button>ajouter au panier</button></a>';
 		echo'</td>';
 		}
 		echo '</tr>';
@@ -108,7 +108,8 @@ $bdd = new PDO('mysql:host=localhost;dbname=eceshop', 'root', '');
 		echo $datav["couleur"].'<br>';
 		echo $datav["taille"].'<br>';
 		echo $datav["prix"].'€<br>';
-		echo'<a href=""><button>ajouter au panier</button></a>';
+		echo'<a href="ajoutpanier.php?idv='.$datav["id"].'"><button>ajouter au panier</button></a>';
+		
 		echo'</td>';
 		}
 		echo '</tr>';
@@ -130,7 +131,8 @@ $bdd = new PDO('mysql:host=localhost;dbname=eceshop', 'root', '');
 		echo$datas["sport"].'<br>';
 		echo$datas["accesoire"].'<br>';
 		echo $datas["prix"].'€<br>';
-		echo'<a href=""><button>ajouter au panier</button></a>';
+		echo'<a href="ajoutpanier.php?ids='.$datas["id"].'"><button>ajouter au panier</button></a>';
+		
 		echo'</td>';
 
 		}
