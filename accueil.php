@@ -5,6 +5,22 @@ session_start();
 
 $bdd = new PDO('mysql:host=localhost;dbname=eceshop', 'root', '');
 
+if(isset($_SESSION['id']))
+{
+$req=$bdd->prepare("SELECT * FROM acheteurs WHERE id=?");
+$req->execute(array($_SESSION['id']));
+$client=$req->fetch();
+
+
+
+echo '<h4 id="icone">'.$client["pseudo"].'<a href="deconnexion.php"><img src="images/deconnexion.png" with="25" height="25"/></a></h4>';
+
+
+}
+
+
+
+
 
 ?>
 
@@ -26,7 +42,11 @@ $bdd = new PDO('mysql:host=localhost;dbname=eceshop', 'root', '');
 
 	<a id ="logo" href="accueil.php"><img src="images/logo.png" height="100" width="100"></a>
 	<a id ="panier" href="panier.php"><img src="images/panier.png" height="50" width="50"></a>
-	<a  id="compte" href="accueilconnexion.php">Compte</a>
+	<a  id="compte" href="accueilconnexion.php">Compte<?php
+
+	?></a>
+
+	
 	
 
 	<nav class="navbar navbar-expand-md">
