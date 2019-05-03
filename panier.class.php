@@ -12,30 +12,45 @@
 					
 				}
 
-				if(!isset($_SESSION['panier'])){
+				if(!isset($_SESSION['panier']) or !isset($_SESSION['paniermusic']) or !isset($_SESSION['paniermusic']) ){
 					//creation d'un tableau de panier pour stocker les id des articles a ajouter
 					$_SESSION['panier']=array();
+					$_SESSION['paniermusic']=array();
+					$_SESSION['nombrearticle']=0;
 				}
 
 				$this->bdd=$bdd;
 			}	
 
 		//fonction pour rajouter un objet dans le panier par son id
-		public function ajouter($produit_id)
+		public function ajouter($produit_id,$nompanier)
 		{
 			//on verifie si le produit existe pas dans le panier et on augmente la quantite
-			if(isset($_SESSION['panier'][$produit_id]))
+			if(isset($_SESSION[$nompanier][$produit_id]))
 			{
+				
 
-
-				$_SESSION['panier'][$produit_id]++;
-
+				$_SESSION[$nompanier][$produit_id]++;
+				var_dump($_SESSION[$nompanier]);
+				
 			}
 			else
 			{
-				$_SESSION['panier'][$produit_id]=1;
+				
+				$_SESSION[$nompanier][$produit_id]=1;
+				var_dump($_SESSION[$nompanier]);
+				
+				
+				
 			}
+
+				//gerer le nombre d'article
+				$_SESSION['nombrearticle']++;
+				echo "nombrearticle";
+				var_dump($_SESSION['nombrearticle']);
 		}
+
+		
 
 		//fonction pour supprimer 
 

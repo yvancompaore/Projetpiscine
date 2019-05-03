@@ -19,7 +19,7 @@ require '_header.php';
 
 			
 			//on le rajoute dans le tableau pour panier
-			$panier->ajouter($produit[0]->id);
+			$panier->ajouter($produit[0]->id,"paniermusic");
 			
 			die('Le produit a bien été ajouter au panier <a href="javascript:history.back()"> retour </a>');
 
