@@ -1,5 +1,20 @@
 <?php
+	require '_header.php';
 	$bdd = new PDO('mysql:host=localhost;dbname=eceshop', 'root', '');
+
+
+	if(isset($_SESSION['id']))
+{
+$req=$bdd->prepare("SELECT * FROM acheteurs WHERE id=?");
+$req->execute(array($_SESSION['id']));
+$client=$req->fetch();
+
+
+
+echo '<h4 id="icone">'.$client["pseudo"].'<a href="deconnexion.php"><img src="images/deconnexion.png" with="25" height="25"/></a></h4>';
+
+
+}
 
 	?>
 
@@ -23,6 +38,7 @@
 
 		<a id ="logo" href="accueil.php"><img src="images/logo.png" height="100" width="100"></a>
 		<a id ="panier" href=""><img src="images/panier.png" height="50" width="50"></a>
+		<p id="num"><?php echo $panier->compterpanier()?></p>
 		<a  id="compte" href="accueilconnexion.php">Compte</a>
 		
 
@@ -75,6 +91,7 @@
 									echo$datas["sport"].'<br>';
 									echo$datas["accesoire"].'<br>';
 									echo $datas["prix"].'€<br>';
+									echo'<a href="ajoutpanier.php?idm='.$datam["id"].'"><button>ajouter au panier</button></a>';
 									echo'</td>';
 
 									}
@@ -96,6 +113,7 @@
 								echo $datav["couleur"].'<br>';
 								echo $datav["taille"].'<br>';
 								echo $datav["prix"].'€<br>';
+								echo'<a href="ajoutpanier.php?idm='.$datam["id"].'"><button>ajouter au panier</button></a>';
 								echo'</td>';
 								}
 								echo '</tr>';
@@ -115,6 +133,7 @@
 							echo $datal["auteur"].'<br>';
 							echo $datal["editeur"].'<br>';
 							echo $datal["prix"].'€<br>';
+							echo'<a href="ajoutpanier.php?idm='.$datam["id"].'"><button>ajouter au panier</button></a>';
 							echo'</td>';
 							}
 							echo '</tr>';
@@ -135,6 +154,7 @@
 						echo $datam["groupe"].'<br>';
 						echo $datam["album"].'<br>';
 						echo $datam["prix"].'€<br>';
+						echo'<a href="ajoutpanier.php?idm='.$datam["id"].'"><button>ajouter au panier</button></a>';
 						echo'</td>';
 						}
 						echo'</tr>';

@@ -21,9 +21,9 @@ require '_header.php';
 			//on le rajoute dans le tableau pour panier
 			$panier->ajouter($produit[0]->id);
 			
-			die('Le produit a bien été ajouter au panier <a href="javascript:history.back()"> retour </a>');
+			//die('Le produit a bien été ajouter au panier <a href="javascript:history.back()"> retour </a>');
 
-			//header('Location: testpanier.php');
+			header("Location: accueil.php");
 
 		}
 	
@@ -46,9 +46,9 @@ require '_header.php';
 					//on le rajoute dans le tableau pour panier
 					$panier->ajouter($produit[0]->id);
 					
-					die('Le produit a bien été ajouter au panier <a href="javascript:history.back()"> retour </a>');
+					//die('Le produit a bien été ajouter au panier <a href="javascript:history.back()"> retour </a>');
 
-					//header('Location: testpanier.php');
+					header("Location: accueil.php");
 
 				}
 
@@ -70,9 +70,9 @@ require '_header.php';
 						//on le rajoute dans le tableau pour panier
 						$panier->ajouter($produit[0]->id);
 						
-						die('Le produit a bien été ajouter au panier <a href="javascript:history.back()"> retour </a>');
+						//die('Le produit a bien été ajouter au panier <a href="javascript:history.back()"> retour </a>');
+						header("Location: accueil.php");
 
-						//header('Location: testpanier.php');
 					}
 
 					else
@@ -93,9 +93,9 @@ require '_header.php';
 							//on le rajoute dans le tableau pour panier
 							$panier->ajouter($produit[0]->id);
 							
-							die('Le produit a bien été ajouter au panier <a href="javascript:history.back()"> retour </a>');
+							//die('Le produit a bien été ajouter au panier <a href="javascript:history.back()"> retour </a>');
 
-							//header('Location: testpanier.php');
+							header("Location: accueil.php");
 						}
 
 						else
@@ -116,9 +116,10 @@ require '_header.php';
 								//on le rajoute dans le tableau pour panier
 								$panier->ajouter($produit[0]->id);
 								
-								die('Le produit a bien été ajouter au panier <a href="javascript:history.back()"> retour </a>');
+								//die('Le produit a bien été ajouter au panier <a href="javascript:history.back()"> retour </a>');
 
 								//header('Location: testpanier.php');
+								header("Location: accueil.php");
 							}
 
 							else
