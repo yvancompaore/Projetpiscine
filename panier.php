@@ -87,6 +87,13 @@ require '_header.php';
 				<label for "Nombre darticle "> Nombre d'article <?php echo $panier->compterpanier()?> </label>
 			</td>
 
+
+			<!--lien passer la commande -->
+			<td align="right">
+				<br/>
+				<a href="panier.php" > Passez la commande </a>
+			</td>
+
 			
 
 	</table>
