@@ -1,4 +1,13 @@
-<head>
+<?php
+
+session_start();
+
+
+$bdd = new PDO('mysql:host=localhost;dbname=eceshop', 'root', '');
+
+
+if(empty($_SESSION['id']))
+echo '<head>
 	<title>ECESHOP</title>
 	<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet"href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
@@ -44,4 +53,11 @@
 	
 
 </body>
-</html>
+</html>';
+if(!empty($_SESSION['id']))
+{
+	header("Location: compte.php?id=".$_SESSION['id']);
+}
+
+
+?>
