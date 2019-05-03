@@ -193,3 +193,12 @@ margin-bottom: 0;
   color: #f2f6e9;
   background-color: #880617;
 }
+
+#num
+{
+  position:absolute;
+    right:70;
+    top:20;
+
+
+}

@@ -1,5 +1,5 @@
 <?php
-session_start();
+require '_header.php';
 
 
 $bdd = new PDO('mysql:host=localhost;dbname=eceshop', 'root', '');
@@ -92,6 +92,7 @@ if(isset($_GET["ids"]))
 <div id="entete">
 <a id ="logo" href="accueil.php"><img src="images/logo.png" height="100" width="100"></a>
 	<a id ="panier" href=""><img src="images/panier.png" height="50" width="50"></a>
+	<p id="num"><?php echo $panier->compterpanier()?></p>
 	<a  id="compte" href="accueilconnexion.php">Compte</a>
 </div>
 

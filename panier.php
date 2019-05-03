@@ -22,7 +22,7 @@ require '_header.php';
 		<?php
 
 			//recuper id du tableau
-			$idc=array_keys($_SESSION['panier']);
+			$idc=array_keys($_SESSION['paniermusic']);
 			$implo=implode(',',$idc);
 
 			if (empty($implo))
@@ -84,7 +84,7 @@ require '_header.php';
 			<!--afficher le nombre d'articles -->
 			<td align="right">
 
-				<label for "Nombre darticle "> Nombre d'article <?php echo $panier->compterpanier()?> </label>
+				<label for "Nombre darticle "> Nombre d'article <?php echo $_SESSION['nombrearticle'] ?> </label>
 			</td>
 
 

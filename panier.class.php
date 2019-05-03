@@ -12,13 +12,40 @@
 					
 				}
 
-				if(!isset($_SESSION['panier']) or !isset($_SESSION['paniermusic']) or !isset($_SESSION['paniermusic']) ){
+				if(!isset($_SESSION['panier']) ){
 					//creation d'un tableau de panier pour stocker les id des articles a ajouter
 					$_SESSION['panier']=array();
-					$_SESSION['paniermusic']=array();
-					$_SESSION['nombrearticle']=0;
+					
 				}
 
+				if(!isset($_SESSION['paniermusic']))
+				{
+
+					$_SESSION['paniermusic']=array();
+				}
+
+				if(!isset($_SESSION['panierlivre']))
+				{
+
+					$_SESSION['panierlivre']=array();
+				}
+
+				if(!isset($_SESSION['paniervetement']))
+				{
+
+					$_SESSION['paniervetement']=array();
+				}
+				if(!isset($_SESSION['paniersport']))
+				{
+
+					$_SESSION['paniersport']=array();
+				}
+
+				if(!isset($_SESSION['nombrearticle']))
+				{
+					$_SESSION['nombrearticle']=0;
+					
+				}
 				$this->bdd=$bdd;
 			}	
 
@@ -31,6 +58,7 @@
 				
 
 				$_SESSION[$nompanier][$produit_id]++;
+				var_dump($nompanier);
 				var_dump($_SESSION[$nompanier]);
 				
 			}
@@ -38,6 +66,7 @@
 			{
 				
 				$_SESSION[$nompanier][$produit_id]=1;
+				var_dump($nompanier);
 				var_dump($_SESSION[$nompanier]);
 				
 				

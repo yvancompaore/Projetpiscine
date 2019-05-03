@@ -21,9 +21,9 @@ require '_header.php';
 			//on le rajoute dans le tableau pour panier
 			$panier->ajouter($produit[0]->id,"paniermusic");
 			
-			die('Le produit a bien été ajouter au panier <a href="javascript:history.back()"> retour </a>');
+			//die('Le produit a bien été ajouter au panier <a href="javascript:history.back()"> retour </a>');
 
-			//header('Location: testpanier.php');
+			header("Location: accueil.php");
 
 		}
 	
@@ -44,39 +44,17 @@ require '_header.php';
 
 					
 					//on le rajoute dans le tableau pour panier
-					$panier->ajouter($produit[0]->id);
+					$panier->ajouter($produit[0]->id,"panierlivre");
 					
-					die('Le produit a bien été ajouter au panier <a href="javascript:history.back()"> retour </a>');
+					//die('Le produit a bien été ajouter au panier <a href="javascript:history.back()"> retour </a>');
 
-					//header('Location: testpanier.php');
+					header("Location: accueil.php");
 
 				}
 
 			else
 				{
-					//si c'est un livre
-					if(isset($_GET['idl']))
-					{	
-						//on recupere l'id du produit
-						$produit=$bdd->requette('SELECT id FROM livre WHERE id=:id',array('id' => $_GET['idl']));
-						
-						//verifie qu'il existe
-						if(empty($produit))
-						{
-							echo "Ce Produit n'existe pas";
-						}
-
-						
-						//on le rajoute dans le tableau pour panier
-						$panier->ajouter($produit[0]->id);
-						
-						die('Le produit a bien été ajouter au panier <a href="javascript:history.back()"> retour </a>');
-
-						//header('Location: testpanier.php');
-					}
-
-					else
-					{
+					
 						//si c'est un vetement
 						if(isset($_GET['idv']))
 						{	
@@ -91,11 +69,11 @@ require '_header.php';
 
 							
 							//on le rajoute dans le tableau pour panier
-							$panier->ajouter($produit[0]->id);
+							$panier->ajouter($produit[0]->id,"paniervetement");
 							
-							die('Le produit a bien été ajouter au panier <a href="javascript:history.back()"> retour </a>');
+							//die('Le produit a bien été ajouter au panier <a href="javascript:history.back()"> retour </a>');
 
-							//header('Location: testpanier.php');
+							header("Location: accueil.php");
 						}
 
 						else
@@ -114,11 +92,12 @@ require '_header.php';
 
 								
 								//on le rajoute dans le tableau pour panier
-								$panier->ajouter($produit[0]->id);
+								$panier->ajouter($produit[0]->id,"paniersport");
 								
-								die('Le produit a bien été ajouter au panier <a href="javascript:history.back()"> retour </a>');
+								//die('Le produit a bien été ajouter au panier <a href="javascript:history.back()"> retour </a>');
 
 								//header('Location: testpanier.php');
+								header("Location: accueil.php");
 							}
 
 							else
@@ -131,7 +110,7 @@ require '_header.php';
 						}
 
 
-					}
+					
 
 				}
 		
