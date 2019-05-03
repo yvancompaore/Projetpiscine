@@ -8,7 +8,7 @@ require '_header.php';
 if(isset($_GET['idp']))
 {	
 	//on recupere l'id du produit
-	$produit=$bdd->requette('SELECT id FROM produits WHERE id=:id',array('id' => $_GET['idp']));
+	$produit=$bdd->requette('SELECT id FROM musique WHERE id=:id',array('id' => $_GET['idp']));
 	
 	//verifie qu'il existe
 	if(empty($produit))

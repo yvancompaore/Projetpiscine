@@ -93,15 +93,22 @@ if(isset($_GET["ids"]))
 		
 	</script>
 	<style type="text/css">
+	body
+	{
+		background-image: url(images/<?php echo $vendeur['imagefond']; ?>);
+		background-repeat:no-repeat;
+	}
 	</style>
 
 </head>
-<body style="background-image: url(images/<?php echo $vendeur['imagefond']; ?>)">
+<body >
 
 
+<div id="entete">
 <a id ="logo" href="accueil.php"><img src="images/logo.png" height="100" width="100"></a>
 	<a id ="panier" href=""><img src="images/panier.png" height="50" width="50"></a>
 	<a  id="compte" href="accueilconnexion.php">Compte</a>
+</div>
 
 	<nav class="navbar navbar-expand-md">
 		
@@ -110,6 +117,10 @@ if(isset($_GET["ids"]))
 			<ul class="navbar-nav">
 				<li class="Categorie"><a class="nav-link" href="TD_5.html">Categorie</a></li>
 				<li class="Flash"><a class="nav-link" href="#">Vente Flash</a></li>
+				<form method="GET" action="trouver.php">
+   				<li><input type="search" id="rechercher"name="q" placeholder="Recherche..." /></li>
+   				<li><input type="submit" id="validerrecherche" value="Valider" /><li>
+				</form>
 			</ul>
 		</div>
 	</nav>
@@ -119,17 +130,18 @@ if(isset($_GET["ids"]))
 			<h2>Profil de <?php echo $vendeur['pseudo']; ?></h2>
 		<table>
 		<tr><td><img  src="images/<?php echo $vendeur['image']; ?>" align="left" width="100" height="100"/></td>
-		<td><?php echo $vendeur['mail']; ?></td>
-		<td><p>Bienvenue <?php echo $vendeur['prenom']; ?><?php echo $vendeur['nom']; ?></p></td></tr>
+		<td><p>Bienvenue <?php echo $vendeur['prenom']; ?> <?php echo $vendeur['nom']; ?></p><br><?php echo $vendeur['mail']; ?></td>
+		</tr>
 		</table>
+		</div>
 			
 			
 			 
 
 			 
-		</div>
+		
      <div id="container">
-         <button id="visualisation" onclick="newElement()">Vos items</button>
+         <button id="visualisation">Vos items</button>
          <button id="buttonB" ">Ajouter un livre</button>
 		<button id="buttonM" ">Ajouter une musique</button>
 		<button id="buttonC" >Ajouter un vetement</button>
@@ -255,28 +267,28 @@ if(isset($_GET["ids"]))
      </div>
     </div> 
      <div class="ajout" id="items">
-     	<div id="loadmusic">
+     	
      	<h3>Musique</h3>
      	<?php
      	$requestm = $bdd->prepare("SELECT * FROM musique WHERE vendeur_id=?");
 		$requestm->execute(array($vendeur["id"]));
 		echo '<table>';
+		echo'<tr>';
 		while ($datam = $requestm->fetch())
 		{
+		echo'<td id="itemvendu">';
 		$d_IDm=$datam["id"];
-		echo'<tr><td><img src="images/'.$datam["pochette"].'"width="50" height="50"></td>';
-		echo'<td>'.$datam["titre"].'</td>';
-		echo'<td>'.$datam["groupe"].'</td>';
-		echo'<td>'.$datam["album"].'</td>';
-		echo'<td>'.$datam["prix"].'€</td>';
-		echo'</tr>';
-		?>
-		<a href="profil.php?idm=<?php echo $d_IDm?>"><button class="image_supprimer"></button></a>
-		<?php
+		echo'<img id="imageitem" src="images/'.$datam["pochette"].'"width="100" height="100"><br>';
+		echo $datam["titre"].'<br>';
+		echo $datam["groupe"].'<br>';
+		echo $datam["album"].'<br>';
+		echo $datam["prix"].'€<br>';
+		echo'<a href="profil.php?idm='.$d_IDm.'"><button class="image_supprimer"></button></a>';
+		echo'</td>';
 		}
+		echo'</tr>';
 		echo '</table>';
 		?>
-		</div>
 
 
 		<h3>Livre</h3>
@@ -286,21 +298,21 @@ if(isset($_GET["ids"]))
 		$requestl->execute(array($vendeur["id"]));
 
 		echo '<table>';
+		echo'<tr>';
 		while ($datal = $requestl->fetch())
 		{
+		echo'<td id="itemvendu">';
 		$d_IDl=$datal["id"];
-		echo'<tr><td><img src="images/'.$datal["couverture"].'"width="50" height="50"></td>';
-		echo'<td>'.$datal["titre"].'</td>';
-		echo'<td>'.$datal["auteur"].'</td>';
-		echo'<td>'.$datal["editeur"].'</td>';
-		echo'<td>'.$datal["prix"].'€</td>';
-		?>
-		<a href="profil.php?idl=<?php echo $d_IDl?>">supprimer</a>	
-		<?php
-
+		echo'<img id="imageitem" src="images/'.$datal["couverture"].'"width="100" height="100"><br>';
+		echo $datal["titre"].'<br>';
+		echo $datal["auteur"].'<br>';
+		echo $datal["editeur"].'<br>';
+		echo $datal["prix"].'€<br>';
+		echo '<a href="profil.php?idl='.$d_IDl.'"><button class="image_supprimer"></button></a>';
+		echo'</td>';
 		}
+		echo '</tr>';
 		echo '</table>';
-		
 		?>
 
 		<h3>Vetement</h3>
@@ -310,20 +322,21 @@ if(isset($_GET["ids"]))
 
 		
 		echo '<table>';
+		echo '<tr>';
 		while ($datav = $requestv->fetch())
 		{
+		echo'<td id="itemvendu">';
 		$d_IDv=$datav["id"];	
-		echo'<tr><td><img src="images/'.$datav["photo"].'"width="50" height="50"></td>';
-		echo'<td>'.$datav["type"].'</td>';
-		echo'<td>'.$datav["genre"].'</td>';
-		echo'<td>'.$datav["couleur"].'</td>';
-		echo'<td>'.$datav["taille"].'</td>';
-		echo'<td>'.$datav["prix"].'€</td>';
-		?>
-		<a href="profil.php?idv=<?php echo $d_IDv?>" name="supprimerv">supprimer</a>		
-		<?php
+		echo'<img  id="imageitem" src="images/'.$datav["photo"].'"width="100" height="100"><br>';
+		echo $datav["type"].'<br>';
+		echo $datav["genre"].'<br>';
+		echo $datav["couleur"].'<br>';
+		echo $datav["taille"].'<br>';
+		echo $datav["prix"].'€<br>';
+		echo '<a href="profil.php?idv='.$d_IDv.'"><button class="image_supprimer"></button></a>';
+		echo'</td>';
 		}
-
+		echo '</tr>';
 		echo '</table>';
 		?>
 
@@ -334,18 +347,20 @@ if(isset($_GET["ids"]))
 		$requests->execute(array($vendeur["id"]));
 
 		echo '<table>';
+		echo '<tr>';
 		while ($datas = $requests->fetch())
 		{
+		echo'<td id="itemvendu">';
 		$d_IDs=$datas["id"];
-		echo'<tr><td><img src="images/'.$datas["photo"].'"width="50" height="50"></td>';
-		echo'<td>'.$datas["sport"].'</td>';
-		echo'<td>'.$datas["accesoire"].'</td>';
-		echo'<td>'.$datas["prix"].'€</td>';
-		echo'</tr>';
-		?>
-		<a href="profil.php?ids=<?php echo $d_IDs?>">supprimer</a>
-		<?php
+		echo'<img id="imageitem" src="images/'.$datas["photo"].'"width="100" height="100"><br>';
+		echo$datas["sport"].'<br>';
+		echo$datas["accesoire"].'<br>';
+		echo $datas["prix"].'€<br>';
+		echo '<a href="profil.php?ids='.$d_IDs.'"><button class="image_supprimer"></button></a>';
+		echo'</td>';
+
 		}
+		echo'</tr>';
 		echo '</table>';
 		
 		?>

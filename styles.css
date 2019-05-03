@@ -1,4 +1,5 @@
 body {background: #f2f6e9;}/*---navigation bar ---*/
+#entete{background-color: #f2f6e9;}
 .navbar 
 {
 	background: #880617
@@ -12,7 +13,7 @@ body {background: #f2f6e9;}/*---navigation bar ---*/
 .navbar-collapse {justify-content: flex-end;}
 .Categorie
 {
-	border: 2px solid grey; background-color:grey;
+	border: 2px solid   #f2f6e9  ; background-color:  #f2f6e9  ;
 	text-align: center;
 	position: absolute;
 	
@@ -20,7 +21,7 @@ body {background: #f2f6e9;}/*---navigation bar ---*/
 }
 .Flash
 {
-	border: 2px solid grey; background-color:grey;
+	border: 2px solid   #f2f6e9  ; background-color:  #f2f6e9  ;
 	text-align: center;
 }
 
@@ -37,21 +38,29 @@ body {background: #f2f6e9;}/*---navigation bar ---*/
 	
   	right: 150px;
   	top:20px;
-  	color: black;
-  	border: 2px solid grey; background-color:grey;
+  	color: #f2f6e9;
+  	border: 2px solid   #880617  ; background-color:  #880617  ;
+    border-radius: 6px;
+    margin: 2px 2px;
 }
-#compte:hover {color: red;}
-[class*="col-lg"]
- {
-  background-color: grey;
-  border: 2px solid grey;
-  color: black;
-  cursor: pointer;
-  border-radius: 6px;
-  line-height: 40px;
-  text-align: center;
-  cursor: pointer;
+#accueilconnexion
+{
+  border: 2px solid   #880617;
+  position: absolute;
+    right: 550;
+    top:200;
+    
+
 }
+
+#connexion
+{
+  position: absolute;
+    right: 150;
+    top:-20;
+
+}
+
 body
   {
     background-size: 100%
@@ -59,8 +68,11 @@ body
   #container
   {
     position:absolute;
-    left:150;
-    bottom:200;
+    left:310;
+    bottom:415;
+    background-color: #f2f6e9    ;
+    border: 2px solid   #f2f6e9  ;
+    border-radius: 6px;
   }
   .ajout
   {
@@ -69,8 +81,11 @@ body
   #items
   {
     position:absolute;
-    left:150;
-    top:250;
+    left:310;
+    top:200;
+    background-color: #f2f6e9    ;
+    border: 2px solid  #f2f6e9   ;
+    border-radius: 6px;
   }
   .image_supprimer
   {
@@ -87,4 +102,95 @@ body
     top:250;
 
   }
+  #presentation
+  {
+  background-color:   #f2f6e9  ;
+  border: 2px solid   #f2f6e9  ;
+  border-radius: 6px;
+  height: 175px;
+  width: 310px;
+  }
 
+#book,#music,#clothes,#sport
+{
+  position:absolute;
+    left:-5;
+    bottom: :375;
+  background-color:   #f2f6e9  ;
+  
+}
+
+#itemvendu
+{
+  border: 2px solid   black  ;
+  border-radius: 6px;
+  border-spacing: 200px;
+}
+
+table
+{
+  border-collapse: separate;
+}
+h3
+{
+  border: 2px solid   black  ;
+  border-radius: 6px;
+  text-align: center;
+  color: #f2f6e9;
+  background-color: #880617;
+}
+
+#magasin
+{
+   
+    background-color: #f2f6e9    ;
+    border: 2px solid  #f2f6e9   ;
+    border-radius: 6px;
+}
+
+#rechercher
+{
+  position:absolute;
+    left:320;
+    top:20;
+}
+
+#validerrecherche
+{
+  position:absolute;
+    left:550;
+    top:20;
+}
+#footer
+{
+  
+background-color:   #f2f6e9  ;
+border: 2px solid   #f2f6e9  ;
+background-color:#880617;
+color:#f2f6e9;
+clear:both;
+text-align:center;
+padding:10px;
+margin-bottom: 0;
+
+}
+
+#imageitem
+{
+  display: block;
+    margin-left: auto;
+    margin-right: auto;
+  
+}
+
+#recherchery
+{
+  position:absolute;
+    left:-100;
+    top:20;
+}
+
+#validerrecherchey
+{
+  
+}

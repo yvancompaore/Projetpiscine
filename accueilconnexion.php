@@ -23,28 +23,24 @@
 			<ul class="navbar-nav">
 				<li class="Categorie"><a class="nav-link" href="TD_5.html">Categorie</a></li>
 				<li class="Flash"><a class="nav-link" href="#">Vente Flash</a></li>
+				<form method="GET" action="trouver.php">
+   				<li><input type="search" id="rechercher"name="q" placeholder="Recherche..." /></li>
+   				<li><input type="submit" id="validerrecherche" value="Valider" /><li>
+				</form>
 			</ul>
 		</div>
 	</nav>
 
 	<div id="accueilconnexion">
-
-			<div class="row">
-        		<admin class="col-lg-2">
-          		<a href="admin.php">Admin</a></li>
-          		</admin>
-        	</div>
-        	<div class="row">	
-        	<section class="col-lg-2">
-          	<a clas="nav-link" href="vendre.php">Vendeur</a>
-        	</section>
-        	</div>
-        	<div class="row">	
-        	<client class="col-lg-2">
-          	<a clas="nav-link" href="connexion.php">Client</a>
-        	</client>
-        	</div>
+		<h3 id="connexion">Connexion </h3>
+		<table style="margin:30px">
+			<tr><td><a href="admin.php"><img src="images/admin1.png" height="100" width="200" /></a></td></tr>
+			<tr><td><a href="vendre.php"><img src="images/vendeur.png"height="100" width="200"/></a></td></tr>
+			<tr><td><a   href="connexion.php"><img src="images/client.png"height="100" width="200"/></a></td></tr>
+		</table>	
+        	
 	</div>
+</div>
 	
 
 </body>

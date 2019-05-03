@@ -52,6 +52,10 @@ if(isset($_POST['connexionvendeur']))
          <ul class="navbar-nav">
             <li class="Categorie"><a class="nav-link" href="TD_5.html">Categorie</a></li>
             <li class="Flash"><a class="nav-link" href="#">Vente Flash</a></li>
+            <form method="GET" action="trouver.php">
+               <li><input type="search" id="rechercher"name="q" placeholder="Recherche..." /></li>
+               <li><input type="submit" id="validerrecherche" value="Valider" /><li>
+            </form>
          </ul>
       </div>
    </nav>
@@ -70,5 +74,6 @@ if(isset($_POST['connexionvendeur']))
          }
          ?>
       </div>
+</div>
    </body>
 </html>
