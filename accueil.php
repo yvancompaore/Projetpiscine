@@ -41,7 +41,7 @@ echo '<h4 id="icone">'.$client["pseudo"].'<a href="deconnexion.php"><img src="im
 
 	<a id ="logo" href="accueil.php"><img src="images/logo.png" height="100" width="100"></a>
 	<a id ="panier" href="panier.php"><img src="images/panier.png" height="50" width="50"></a>
-	<p id="num"><?php echo $panier->compterpanier()?></p>
+	<p id="num"><?php echo $_SESSION['nombrearticle']?></p>
 	<a  id="compte" href="accueilconnexion.php">Compte<?php
 
 	?></a>

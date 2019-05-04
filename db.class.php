@@ -27,6 +27,7 @@ class DB{
 	}
 	public function requette($sql , $data= array())
 	{
+		
 		$req=$this->bdd->prepare($sql);
 		$req->execute($data);
 		//on recupere tout
