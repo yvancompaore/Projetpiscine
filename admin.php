@@ -42,7 +42,7 @@ if(isset($_POST['connexionadmin']))
    </head>
    <body>
       <a id ="logo" href="accueil.php"><img src="images/logo.png" height="100" width="100"></a>
-   <a id ="panier" href=""><img src="images/panier.png" height="50" width="50"></a>
+   <a id ="panier" href="panier.php"><img src="images/panier.png" height="50" width="50"></a>
    <p id="num"><?php echo $panier->compterpanier()?></p>
    <a  id="compte" href="accueilconnexion.php">Compte</a>
 
@@ -51,7 +51,7 @@ if(isset($_POST['connexionadmin']))
       <div class="navbar-collapse" id="main-navigation">
          
          <ul class="navbar-nav">
-            <li class="Categorie"><a class="nav-link" href="TD_5.html">Categorie</a></li>
+            <li class="Categorie"><a class="nav-link" href="accueil.php">Categorie</a></li>
             <li class="Flash"><a class="nav-link" href="#">Vente Flash</a></li>
             <form method="GET" action="trouver.php">
                <li><input type="search" id="rechercher"name="q" placeholder="Recherche..." /></li>

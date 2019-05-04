@@ -202,3 +202,17 @@ margin-bottom: 0;
 
 
 }
+
+#panierpresentation
+{
+  position:absolute;
+    left:50;
+    top:175;
+}
+#itemspanier
+{
+  border:4px solid #880617;
+  position:absolute;
+    left:50;
+    top:212;
+}
