@@ -54,15 +54,23 @@ if(isset($_POST['payement']))
 													{
 														
 														echo"votre commande a bien été prise en compte Merci pour votre achat";
-														var_dump( $_SESSION['prixto']);
+														
 														//enregistrer commande
 														$creationcomande= $bdde -> prepare("INSERT INTO commande (ida,quantité,prix)  VALUES(?,?,?)");
 														$creationcomande -> execute(array($_SESSION['id'],$_SESSION['nombrearticle'],$_SESSION['prixto']));
 
 
+														//supprimer articles commander de la bd
+														$panier->supprimerarticles('paniermusic','musique');
+														$panier->supprimerarticles('panierlivre','livre');
+														$panier->supprimerarticles('paniervetement','vetement');
+														$panier->supprimerarticles('paniersport','sport');
+
 														//vider panier
 
 														$panier->vider();
+
+														
 
 
 
