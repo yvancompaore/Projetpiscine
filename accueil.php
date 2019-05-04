@@ -54,7 +54,7 @@ echo '<h4 id="icone">'.$client["pseudo"].'<a href="deconnexion.php"><img src="im
 		<div class="navbar-collapse" id="main-navigation">
 			
 			<ul class="navbar-nav">
-				<li class="Categorie"><a class="nav-link" href="TD_5.html">Categorie</a></li>
+				<li class="Categorie"><a class="nav-link" href="accueil.php">Categorie</a></li>
 				<li class="Flash"><a class="nav-link" href="#">Vente Flash</a></li>
 				<form method="GET" action="trouver.php">
    				<li><input type="search" id="rechercher"name="q" placeholder="Recherche..." /></li>

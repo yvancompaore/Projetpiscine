@@ -1,14 +1,12 @@
 <?php
 require '_header.php';
 
-<<<<<<< HEAD
-$bdd= new DB();
-=======
 
 
->>>>>>> c0dfcd6197e5ce903dfa82e0ee3d36c95c56edc8
-// chargement de la base de donne
-//$bdd= new PDO('mysql:host=localhost;dbname=eceshop;charset=utf8','root','');
+
+
+
+$bdd= new PDO('mysql:host=localhost;dbname=eceshop;charset=utf8','root','');
 
 //test pour voir si le boutton connexion est activé
 if(isset($_POST['connexion']))
@@ -19,7 +17,7 @@ if(isset($_POST['connexion']))
 	//verification que tous les champs sont remplis
 	if(!empty($email1co) AND !empty($mdp1co))
 	{
-		$verifacheteur= $bdd->bdd->prepare("SELECT * FROM acheteurs WHERE mail = ? AND mdp = ?");
+		$verifacheteur= $bdd->prepare("SELECT * FROM acheteurs WHERE mail = ? AND mdp = ?");
 		$verifacheteur->execute(array($email1co,$mdp1co));
 		//permet de compter les lignes qui existe dans la bdd avec le meme mdp et acheteur
 		$acheteurexiste=$verifacheteur->rowCount();
@@ -70,7 +68,7 @@ if(isset($_POST['connexion']))
 
 	<body>
 		<a id ="logo" href="accueil.php"><img src="images/logo.png" height="100" width="100"></a>
-	<a id ="panier" href=""><img src="images/panier.png" height="50" width="50"></a>
+	<a id ="panier" href="panier.php"><img src="images/panier.png" height="50" width="50"></a>
 	<p id="num"><?php echo $panier->compterpanier()?></p>
 	<a  id="compte" href="accueilconnexion.php">Compte</a>
 	<nav class="navbar navbar-expand-md">
@@ -78,7 +76,7 @@ if(isset($_POST['connexion']))
 		<div class="navbar-collapse" id="main-navigation">
 			
 			<ul class="navbar-nav">
-				<li class="Categorie"><a class="nav-link" href="TD_5.html">Categorie</a></li>
+				<li class="Categorie"><a class="nav-link" href="accueil.php">Categorie</a></li>
 				<li class="Flash"><a class="nav-link" href="#">Vente Flash</a></li>
 				<form method="GET" action="trouver.php">
    				<li><input type="search" id="rechercher" name="q" placeholder="Recherche..." /></li>

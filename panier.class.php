@@ -65,7 +65,7 @@
 
 				$_SESSION[$nompanier][$produit_id]++;
 				$_SESSION['prixto']=$_SESSION['prixto']+$prix;
-				var_dump($_SESSION['prixto']);
+				//var_dump($_SESSION['prixto']);
 				
 			}
 			else
@@ -73,7 +73,7 @@
 				
 				$_SESSION[$nompanier][$produit_id]=1;
 				$_SESSION['prixto']=$_SESSION['prixto']+$prix;
-				var_dump($_SESSION['prixto']);
+				//var_dump($_SESSION['prixto']);
 				
 				
 				
@@ -94,7 +94,7 @@
 			//on actualise le nombre total puis on supprime du panier
 			$_SESSION['nombrearticle']= $_SESSION['nombrearticle'] - $_SESSION[$nompanier][$produit_id];
 			$_SESSION['prixto']=$_SESSION['prixto']- $prix*$_SESSION[$nompanier][$produit_id];
-			var_dump($_SESSION['prixto']);
+			//var_dump($_SESSION['prixto']);
 			unset($_SESSION[$nompanier][$produit_id]);
 
 		}
@@ -110,7 +110,7 @@
 
 			if (empty($implo))
 			{
-				echo "panier vide";
+				
 
 			}
 
@@ -165,7 +165,6 @@
 					?>
 					<br/>
 					<?php
-					echo 'vous avez pas de ' .$local. ' Voulez vous en rajouter';
 
 				}
 
@@ -181,7 +180,7 @@
 						
 				?>
 						
-							<tr>
+							
 								<?php
 
 										
@@ -189,10 +188,49 @@
 									{ 
 								?>
 									
-										<td align="right">
+										
 											<!-- pour le nom -->
-										<label for "titre"> <?php echo $produit->titre ?> </label>
-										</td>
+									     	<?php
+									     	$bdd = new PDO('mysql:host=localhost;dbname=eceshop', 'root', '');
+									     	$requestm = $bdd->prepare("SELECT * FROM musique WHERE id=?");
+											$requestm->execute(array($produit->id));
+											echo '<table>';
+											echo'<tr>';
+											while ($datam = $requestm->fetch())
+											{
+											echo'<td id="itemvendu">';
+											$d_IDm=$datam["id"];
+											echo'<img id="imageitem" src="images/'.$datam["pochette"].'"width="100" height="100"><br>';
+											echo $datam["titre"].'<br>';
+											echo $datam["groupe"].'<br>';
+											echo $datam["album"].'<br>';
+											echo'</td>';
+											}
+											echo'</tr>';
+											echo '</table>';
+											$requestl = $bdd->prepare("SELECT * FROM livre WHERE id=?");
+												$requestl->execute(array($produit->id));
+
+												echo '<table>';
+												echo'<tr>';
+												while ($datal = $requestl->fetch())
+												{
+												echo'<td id="itemvendu">';
+												$d_IDl=$datal["id"];
+												echo'<img id="imageitem" src="images/'.$datal["couverture"].'"width="100" height="100"><br>';
+												echo $datal["titre"].'<br>';
+												echo $datal["auteur"].'<br>';
+												echo $datal["editeur"].'<br>';
+												echo'</td>';
+												}
+												echo '</tr>';
+												echo '</table>';
+
+
+
+											?>
+
+										
 								<?php
 									}
 								?>
@@ -202,10 +240,30 @@
 									{
 								?>
 
-										<td align="right">
+										
 										<!-- pour le nom -->
-										<label for "titre"> <?php echo $produit->type ?> </label>
-										</td>
+										
+											<?php
+											$bdd = new PDO('mysql:host=localhost;dbname=eceshop', 'root', '');
+											$requestv = $bdd->prepare("SELECT * FROM vetement WHERE id=?");
+											$requestv->execute(array($produit->id));
+
+											echo '<table>';
+											echo '<tr>';
+											while ($datav = $requestv->fetch())
+											{
+											echo'<td id="itemvendu">';	
+											echo'<img id="imageitem" src="images/'.$datav["photo"].'"width="100" height="100"><br>';
+											echo $datav["type"].'<br>';
+											echo $datav["genre"].'<br>';
+											echo $datav["couleur"].'<br>';
+											echo $datav["taille"].'<br>';	
+											echo'</td>';
+											}
+											echo '</tr>';
+											echo '</table>';
+											?>
+										
 								<?php		
 									}
 								?>
@@ -214,36 +272,50 @@
 								<?php
 									if($local=="sport")
 									{
-								?>
+										$bdd = new PDO('mysql:host=localhost;dbname=eceshop', 'root', '');
+										$requests = $bdd->prepare("SELECT * FROM sport WHERE id=?");
+										$requests->execute(array($produit->id));
 
-										<td align="right">
-										<!-- pour le nom -->
-										<label for "titre"> <?php echo $produit->accesoire ?> </label>
-										</td>
-								<?php		
+										echo '<table>';
+										echo '<tr>';
+										while ($datas = $requests->fetch())
+										{
+										echo'<td id="itemvendu">';
+										$d_IDs=$datas["id"];
+										echo'<img id="imageitem" src="images/'.$datas["photo"].'"width="100" height="100"><br>';
+										echo$datas["sport"].'<br>';
+										echo$datas["accesoire"].'<br>';
+										echo'</td>';
+
+										}
+										echo'</tr>';
+										echo '</table>';
+
+										
+										
 									}
 								?>
 
 
 									<td align="right">
-										<label for "Prix"> <?php echo number_format($produit->prix,2,',','')?> $</label>
+										<label for "Prix"> Prix: <?php echo number_format($produit->prix,2,',','')?> $</label><br>
 									</td>
 
 									<td align="right">
-										<label for "Prixtva"> Prix tva <?php echo number_format($produit->prix*1.196,2,',','')?> $</label>
+										<!--<label for "Prixtva"> frais de transport (+2,00$) <?php //echo number_format($produit->prix+2,2,',','')?> €</label><br>-->
 									</td>
 
 									<td align="right">
 
-										<label for "quantite"> <?php echo $_SESSION[$nompanier][$produit->id] ?> </label>		
+										<label for "quantite">Quantité <?php echo $_SESSION[$nompanier][$produit->id] ?> </label>		
 									</td>
 
 									<td align="right">
-										<a href="panier.php?supp=<?php echo $produit->id ?>&amp;nom=<?php echo $nompanier ?>&amp;pri=<?php echo $produit->prix ?>" > supprimer </a>
+										<a href="panier.php?supp=<?php echo $produit->id ?>&amp;nom=<?php echo $nompanier ?>&amp;pri=<?php echo $produit->prix ?>" ><button class="image_supprimer"></button></a>
 									</td>
 
 
-							</tr>
+								
 
 					<?php
 					

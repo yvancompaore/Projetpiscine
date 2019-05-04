@@ -37,7 +37,7 @@ echo '<h4 id="icone">'.$client["pseudo"].'<a href="deconnexion.php"><img src="im
 		
 
 		<a id ="logo" href="accueil.php"><img src="images/logo.png" height="100" width="100"></a>
-		<a id ="panier" href=""><img src="images/panier.png" height="50" width="50"></a>
+		<a id ="panier" href="panier.php"><img src="images/panier.png" height="50" width="50"></a>
 		<p id="num"><?php echo $panier->compterpanier()?></p>
 		<a  id="compte" href="accueilconnexion.php">Compte</a>
 		
@@ -47,7 +47,7 @@ echo '<h4 id="icone">'.$client["pseudo"].'<a href="deconnexion.php"><img src="im
 			<div class="navbar-collapse" id="main-navigation">
 				
 				<ul class="navbar-nav">
-					<li class="Categorie"><a class="nav-link" href="TD_5.html">Categorie</a></li>
+					<li class="Categorie"><a class="nav-link" href="accueil.php">Categorie</a></li>
 					<li class="Flash"><a class="nav-link" href="#">Vente Flash</a></li>
 					<form method="GET" action="trouver.php">
 						<li><input type="search" id="rechercher"name="q" placeholder="Recherche..." /></li>
@@ -74,7 +74,7 @@ echo '<h4 id="icone">'.$client["pseudo"].'<a href="deconnexion.php"><img src="im
 							$articlesv->execute(array($_GET['q'],$_GET['q'],$_GET['q'],$_GET['q']));
 							if($articlesv->rowcount()==0)
 							{
-								$articless = $bdd->prepare('SELECT * FROM sport WHERE sport=? OR accessoire=?');
+								$articless = $bdd->prepare('SELECT * FROM sport WHERE sport=? OR accesoire=?');
 								$articless->execute(array($_GET['q'],$_GET['q']));
 								if($articless->rowcount()==0)
 								{
@@ -91,7 +91,7 @@ echo '<h4 id="icone">'.$client["pseudo"].'<a href="deconnexion.php"><img src="im
 									echo$datas["sport"].'<br>';
 									echo$datas["accesoire"].'<br>';
 									echo $datas["prix"].'€<br>';
-									echo'<a href="ajoutpanier.php?idm='.$datam["id"].'"><button>ajouter au panier</button></a>';
+									echo'<a href="ajoutpanier.php?ids='.$datas["id"].'"><button>ajouter au panier</button></a>';
 									echo'</td>';
 
 									}
@@ -113,7 +113,7 @@ echo '<h4 id="icone">'.$client["pseudo"].'<a href="deconnexion.php"><img src="im
 								echo $datav["couleur"].'<br>';
 								echo $datav["taille"].'<br>';
 								echo $datav["prix"].'€<br>';
-								echo'<a href="ajoutpanier.php?idm='.$datam["id"].'"><button>ajouter au panier</button></a>';
+								echo'<a href="ajoutpanier.php?idv='.$datav["id"].'"><button>ajouter au panier</button></a>';
 								echo'</td>';
 								}
 								echo '</tr>';
@@ -133,7 +133,7 @@ echo '<h4 id="icone">'.$client["pseudo"].'<a href="deconnexion.php"><img src="im
 							echo $datal["auteur"].'<br>';
 							echo $datal["editeur"].'<br>';
 							echo $datal["prix"].'€<br>';
-							echo'<a href="ajoutpanier.php?idm='.$datam["id"].'"><button>ajouter au panier</button></a>';
+							echo'<a href="ajoutpanier.php?idl='.$datal["id"].'"><button>ajouter au panier</button></a>';
 							echo'</td>';
 							}
 							echo '</tr>';
