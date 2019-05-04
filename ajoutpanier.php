@@ -9,7 +9,7 @@ require '_header.php';
 	if(isset($_GET['idm']))
 		{	
 			//on recupere l'id du produit
-			$produit=$bdd->requette('SELECT id FROM musique WHERE id=:id',array('id' => $_GET['idm']));
+			$produit=$bdd->requette('SELECT * FROM musique WHERE id=:id',array('id' => $_GET['idm']));
 			
 			//verifie qu'il existe
 			if(empty($produit))
@@ -18,8 +18,9 @@ require '_header.php';
 			}
 
 			
+			
 			//on le rajoute dans le tableau pour panier
-			$panier->ajouter($produit[0]->id,"paniermusic");
+			$panier->ajouter($produit[0]->id,"paniermusic",$produit[0]->prix);
 			
 			//die('Le produit a bien été ajouter au panier <a href="javascript:history.back()"> retour </a>');
 
@@ -34,7 +35,7 @@ require '_header.php';
 			if(isset($_GET['idl']))
 				{	
 					//on recupere l'id du produit
-					$produit=$bdd->requette('SELECT id FROM livre WHERE id=:id',array('id' => $_GET['idl']));
+					$produit=$bdd->requette('SELECT * FROM livre WHERE id=:id',array('id' => $_GET['idl']));
 					
 					//verifie qu'il existe
 					if(empty($produit))
@@ -44,7 +45,7 @@ require '_header.php';
 
 					
 					//on le rajoute dans le tableau pour panier
-					$panier->ajouter($produit[0]->id,"panierlivre");
+					$panier->ajouter($produit[0]->id,"panierlivre",$produit[0]->prix);
 					
 					//die('Le produit a bien été ajouter au panier <a href="javascript:history.back()"> retour </a>');
 
@@ -59,7 +60,7 @@ require '_header.php';
 						if(isset($_GET['idv']))
 						{	
 							//on recupere l'id du produit
-							$produit=$bdd->requette('SELECT id FROM vetement WHERE id=:id',array('id' => $_GET['idv']));
+							$produit=$bdd->requette('SELECT * FROM vetement WHERE id=:id',array('id' => $_GET['idv']));
 							
 							//verifie qu'il existe
 							if(empty($produit))
@@ -69,7 +70,7 @@ require '_header.php';
 
 							
 							//on le rajoute dans le tableau pour panier
-							$panier->ajouter($produit[0]->id,"paniervetement");
+							$panier->ajouter($produit[0]->id,"paniervetement",$produit[0]->prix);
 							
 							//die('Le produit a bien été ajouter au panier <a href="javascript:history.back()"> retour </a>');
 
@@ -82,7 +83,7 @@ require '_header.php';
 							if(isset($_GET['ids']))
 							{	
 								//on recupere l'id du produit
-								$produit=$bdd->requette('SELECT id FROM sport WHERE id=:id',array('id' => $_GET['ids']));
+								$produit=$bdd->requette('SELECT * FROM sport WHERE id=:id',array('id' => $_GET['ids']));
 								
 								//verifie qu'il existe
 								if(empty($produit))
@@ -92,7 +93,7 @@ require '_header.php';
 
 								
 								//on le rajoute dans le tableau pour panier
-								$panier->ajouter($produit[0]->id,"paniersport");
+								$panier->ajouter($produit[0]->id,"paniersport",$produit[0]->prix);
 								
 								//die('Le produit a bien été ajouter au panier <a href="javascript:history.back()"> retour </a>');
 
