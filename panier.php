@@ -69,18 +69,22 @@ echo '<h4 id="icone">'.$client["pseudo"].'<a href="deconnexion.php"><img src="im
 	<div id="itemspanier" align="center">
 	<table><tr>
 				<?php
+				if($_SESSION['nombrearticle']==0)
+						{ ?>
+							<p id="infopanier">Votre panier n'attend qu'à être rempli</p>
+						<?php }
 				//appel de la fonction afficher dans panier class
 				$panier->afficher('paniermusic','musique');
 				$panier->afficher('panierlivre','livre');
 				$panier->afficher('paniervetement','vetement');
 				$panier->afficher('paniersport','sport');
-				?>
+				
 
 
 
 
 
-
+		?>
 		
 
 			<!--afficher le prix total -->
@@ -94,12 +98,20 @@ echo '<h4 id="icone">'.$client["pseudo"].'<a href="deconnexion.php"><img src="im
 			<td align="right">
 				
 				<h3><label for "Prixtotal"> Prix total <?php echo number_format($_SESSION['prixto'])?> €</label></h3>
+				
+
 			</td>
 
 
 			<!--lien passer la commande -->
 			<td align="right">
-				<p>Passez la commande<a href="panier.php" ><img id="imageitem" src="images/camion"width="50" height="50"></a></p>
+				<?php
+				if($_SESSION['nombrearticle']!=0)
+				{ ?>
+					<p>Passez la commande<a href="panier.php" ><img id="imageitem" src="images/camion"width="50" height="50"></a></p>
+				<?php }?>
+				
+
 			</td></tr>
 
 			
