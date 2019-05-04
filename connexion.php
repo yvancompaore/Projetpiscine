@@ -1,7 +1,6 @@
 <?php
 require '_header.php';
 
-require 'db.class.php';
 $bdd= new DB();
 // chargement de la base de donne
 //$bdd= new PDO('mysql:host=localhost;dbname=eceshop;charset=utf8','root','');
