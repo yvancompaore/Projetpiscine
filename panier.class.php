@@ -99,6 +99,23 @@
 
 		}
 
+
+		public function vider()
+		{
+			unset($_SESSION['paniermusic']);
+			unset($_SESSION['panierlivre']);
+			unset($_SESSION['paniervetement']);
+			unset($_SESSION['paniersport']);
+			unset($_SESSION['panier']);
+			$_SESSION['nombrearticle']=0;
+			$_SESSION['prixto']=0;
+			header('Location: accueil.php');
+			
+
+
+
+		}
+
 		//fonction calcul prix total
 		 public function total()
 		 {

@@ -9,6 +9,7 @@ require '_header.php';
 
 				$panier->supprimer($_GET['supp'],$_GET['nom'],$_GET['pri']);
 			}
+		var_dump($_SESSION['panier']);
 
 
 ?>
@@ -55,7 +56,7 @@ require '_header.php';
 			<!--lien passer la commande -->
 			<td align="right">
 				<br/>
-				<a href="panier.php" > Passez la commande </a>
+				<a href="payement.php" > Passez la commande </a>
 			</td>
 
 			
