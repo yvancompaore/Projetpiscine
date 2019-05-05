@@ -85,15 +85,27 @@ if(isset($_GET['id']) AND $_GET['id']>0)
 
 						</tr>
 
-						<tr>
-							<td>
-								<h3> Vos COMANDES  </h3>
-									<P> articles ........
-										</br/>
-									</P>
-							</td>
+						
+							
+								<tr><td><h3> Dernières Commandes  </h3></td></tr>
+									<?php
 
-						</tr>
+
+									$req= $bdd->prepare("SELECT * FROM commande WHERE ida=?");
+									$req->execute(array($_GET['id']));
+										while($trouver=$req->fetch())
+										{
+											echo '<tr><td> <p>Quantité '.$trouver["quantité"].' Prix total de la commande '.$trouver["prix"].'€</p></td></tr>';
+											
+										}
+										
+											
+										
+									
+
+									
+									?>
+									
 
 						<tr>
 							<td>

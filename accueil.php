@@ -65,9 +65,9 @@ echo '<h4 id="icone">'.$client["pseudo"].'<a href="deconnexion.php"><img src="im
 	</nav>
 
 
-	<div id="items">
-
-		<h3>Musique</h3>
+	<div id="itemsvendu">
+		<br>
+		<h3 id="presentationi">Musique</h3>
      	<?php
      	$requestm = $bdd->query("SELECT * FROM musique");
 		
@@ -90,7 +90,7 @@ echo '<h4 id="icone">'.$client["pseudo"].'<a href="deconnexion.php"><img src="im
 		?>
 
 
-		<h3>Livre</h3>
+		<h3 id="presentationi">Livre</h3>
 
 		<?php
      	$requestl = $bdd->query("SELECT * FROM livre ");
@@ -113,7 +113,7 @@ echo '<h4 id="icone">'.$client["pseudo"].'<a href="deconnexion.php"><img src="im
 		echo '</table>';
 		?>
 
-		<h3>Vetement</h3>
+		<h3 id="presentationi">Vetement</h3>
 		<?php
 		$requestv = $bdd->query("SELECT * FROM vetement");
 
@@ -138,7 +138,7 @@ echo '<h4 id="icone">'.$client["pseudo"].'<a href="deconnexion.php"><img src="im
 		?>
 
 
-		<h3>Sport</h3>
+		<h3 id="presentationi">Sport</h3>
 		<?php
 		$requests = $bdd->query("SELECT * FROM sport ");
 		
