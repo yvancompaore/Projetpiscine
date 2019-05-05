@@ -81,8 +81,22 @@ echo '<h4 id="icone">'.$client["pseudo"].'<a href="deconnexion.php"><img src="im
 		echo $datam["groupe"].'<br>';
 		echo $datam["album"].'<br>';
 		echo $datam["prix"].'€<br>';
+		
+		if(!isset($_SESSION['paniermusic'][$datam["id"]]))
+		{
 		echo'<a href="ajoutpanier.php?idm='.$datam["id"].'"><button>ajouter au panier</button></a>';
 		echo'</td>';
+		}
+		else
+		{
+			echo'<a ><button>Deja dans le panier</button></a>';
+			echo'</td>';
+
+		}
+
+
+
+
 			
 		}
 		echo'</tr>';
@@ -106,8 +120,23 @@ echo '<h4 id="icone">'.$client["pseudo"].'<a href="deconnexion.php"><img src="im
 		echo $datal["auteur"].'<br>';
 		echo $datal["editeur"].'<br>';
 		echo $datal["prix"].'€<br>';
+	
+		if(!isset($_SESSION['panierlivre'][$datal["id"]]))
+		{
 		echo'<a href="ajoutpanier.php?idl='.$datal["id"].'"><button>ajouter au panier</button></a>';
 		echo'</td>';
+		}
+		else
+		{
+			echo'<a ><button>Deja dans le panier</button></a>';
+			echo'</td>';
+
+		}
+
+
+		
+
+
 		}
 		echo '</tr>';
 		echo '</table>';
@@ -129,9 +158,23 @@ echo '<h4 id="icone">'.$client["pseudo"].'<a href="deconnexion.php"><img src="im
 		echo $datav["couleur"].'<br>';
 		echo $datav["taille"].'<br>';
 		echo $datav["prix"].'€<br>';
-		echo'<a href="ajoutpanier.php?idv='.$datav["id"].'"><button>ajouter au panier</button></a>';
 		
+
+		if(!isset($_SESSION['paniervetement'][$datav["id"]]))
+		{
+		echo'<a href="ajoutpanier.php?idv='.$datav["id"].'"><button>ajouter au panier</button></a>';
 		echo'</td>';
+		}
+		else
+		{
+			echo'<a ><button>Deja dans le panier</button></a>';
+			echo'</td>';
+
+		}
+
+
+
+
 		}
 		echo '</tr>';
 		echo '</table>';
@@ -152,9 +195,18 @@ echo '<h4 id="icone">'.$client["pseudo"].'<a href="deconnexion.php"><img src="im
 		echo$datas["sport"].'<br>';
 		echo$datas["accesoire"].'<br>';
 		echo $datas["prix"].'€<br>';
-		echo'<a href="ajoutpanier.php?ids='.$datas["id"].'"><button>ajouter au panier</button></a>';
 		
+		if(!isset($_SESSION['paniersport'][$datas["id"]]))
+		{
+		echo'<a href="ajoutpanier.php?ids='.$datas["id"].'"><button>ajouter au panier</button></a>';
 		echo'</td>';
+		}
+		else
+		{
+			echo'<a ><button>Deja dans le panier</button></a>';
+			echo'</td>';
+
+		}
 
 		}
 		echo'</tr>';

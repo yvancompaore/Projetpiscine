@@ -11,18 +11,29 @@ $bdd = new PDO('mysql:host=localhost;dbname=eceshop', 'root', '');
 			}
 
 
-if(isset($_SESSION['id']))
-{
-$req=$bdd->prepare("SELECT * FROM acheteurs WHERE id=?");
-$req->execute(array($_SESSION['id']));
-$client=$req->fetch();
+
+	if(isset($_POST['validation']))
+		{
+			
+			$panier->code($_POST['code']);
+
+		}		
 
 
 
-echo '<h4 id="icone">'.$client["pseudo"].'<a href="deconnexion.php"><img src="images/deconnexion.png" with="25" height="25"/></a></h4>';
+	if(isset($_SESSION['id']))
+	{
+	$req=$bdd->prepare("SELECT * FROM acheteurs WHERE id=?");
+	$req->execute(array($_SESSION['id']));
+	$client=$req->fetch();
 
 
-}
+
+	echo '<h4 id="icone">'.$client["pseudo"].'<a href="deconnexion.php"><img src="images/deconnexion.png" with="25" height="25"/></a></h4>';
+
+
+	}
+
 ?>
 
 <html>
@@ -94,6 +105,23 @@ echo '<h4 id="icone">'.$client["pseudo"].'<a href="deconnexion.php"><img src="im
 			</td>
 
 
+			<form method="POST" action ="">
+				<table>
+					<tr>
+						<td align="right">
+							<input type="text" placeholder="entrer un code promo" name="code"  />
+						</td>
+
+						<td align="right">
+							<input type="submit" name="validation" value="valider">
+						</td>
+
+
+					</tr>
+				</table>
+
+			</form>
+
 			<!--afficher le nombre d'articles -->
 			<td align="right">
 				
@@ -101,6 +129,10 @@ echo '<h4 id="icone">'.$client["pseudo"].'<a href="deconnexion.php"><img src="im
 				
 
 			</td>
+
+			
+
+
 
 
 			<!--lien passer la commande -->
