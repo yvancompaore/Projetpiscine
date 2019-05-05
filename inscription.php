@@ -3,7 +3,6 @@
 require '_header.php';
 
 // chargement de la base de donne
-$bdd= new PDO('mysql:host=localhost;dbname=eceshop;charset=utf8','root','');
 
 //verification clic boutton d'inscription
 if(isset($_POST['validation']))
@@ -32,7 +31,7 @@ if(isset($_POST['validation']))
 				{
 					if (filter_var($email1, FILTER_VALIDATE_EMAIL))
 						{
-							$testmail = $bdd -> prepare("SELECT * FROM acheteurs WHERE mail = ?");
+							$testmail = $bdde -> prepare("SELECT * FROM acheteurs WHERE mail = ?");
 							$testmail -> execute(array($email1));
 							$emailexiste= $testmail->rowCount();
 
@@ -42,8 +41,8 @@ if(isset($_POST['validation']))
 								if($mdp1== $mdp2)
 									{
 
-										$creationmembre= $bdd -> prepare("INSERT INTO acheteurs(nom,prenom,adresse,mail,pseudo,mdp)  VALUES(?,?,?,?,?,?)");
-										$creationmembre -> execute(array($nom,$prenom,$adresse,$email1,$pseudo,$mdp1));
+										$creationmembre= $bdde -> prepare("INSERT INTO acheteurs(nom,prenom,adresse,mail,pseudo,mdp) VALUES (?,?,?,?,?,?)");
+										$creationmembre->execute(array($nom,$prenom,$adresse,$email1,$pseudo,$mdp1));
 										$erreur ="votre compte a bien été créé <a href=\"connexion.php\"> Se connecter </a> ";
 
 										
