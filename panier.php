@@ -109,12 +109,20 @@ $bdd = new PDO('mysql:host=localhost;dbname=eceshop', 'root', '');
 				<table>
 					<tr>
 						<td align="right">
+							<?php
+							if($_SESSION['nombrearticle']!=0)
+							{
+
+								?>
 							<input type="text" placeholder="entrer un code promo" name="code"  />
 						</td>
 
 						<td align="right">
 							<input type="submit" name="validation" value="valider">
 						</td>
+					<?php
+				}
+				?>
 
 
 					</tr>
