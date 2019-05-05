@@ -11,6 +11,7 @@ $bdd = new PDO('mysql:host=localhost;dbname=eceshop', 'root', '');
 			}
 
 
+
 	if(isset($_POST['validation']))
 		{
 			
@@ -18,6 +19,20 @@ $bdd = new PDO('mysql:host=localhost;dbname=eceshop', 'root', '');
 
 		}		
 
+
+
+	if(isset($_SESSION['id']))
+	{
+	$req=$bdd->prepare("SELECT * FROM acheteurs WHERE id=?");
+	$req->execute(array($_SESSION['id']));
+	$client=$req->fetch();
+
+
+
+	echo '<h4 id="icone">'.$client["pseudo"].'<a href="deconnexion.php"><img src="images/deconnexion.png" with="25" height="25"/></a></h4>';
+
+
+	}
 
 ?>
 
