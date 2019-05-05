@@ -106,8 +106,23 @@ echo '<h4 id="icone">'.$client["pseudo"].'<a href="deconnexion.php"><img src="im
 		echo $datal["auteur"].'<br>';
 		echo $datal["editeur"].'<br>';
 		echo $datal["prix"].'€<br>';
+		$bon=$datal["id"];
+		if(!isset($_SESSION['panierlivre'][$bon]))
+		{
 		echo'<a href="ajoutpanier.php?idl='.$datal["id"].'"><button>ajouter au panier</button></a>';
 		echo'</td>';
+		}
+		else
+		{
+			echo'<a ><button>Deja dans le panier</button></a>';
+			echo'</td>';
+
+		}
+
+
+		
+
+
 		}
 		echo '</tr>';
 		echo '</table>';

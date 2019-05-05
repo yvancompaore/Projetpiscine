@@ -96,6 +96,11 @@
 			//on actualise le nombre total puis on supprime du panier
 			$_SESSION['nombrearticle']= $_SESSION['nombrearticle'] - $_SESSION[$nompanier][$produit_id];
 			$_SESSION['prixto']=$_SESSION['prixto']- $prix*$_SESSION[$nompanier][$produit_id];
+
+			if($_SESSION['prixto']<=0)
+			{
+				$_SESSION['prixto']=0;
+			}
 			//var_dump($_SESSION['prixto']);
 			unset($_SESSION[$nompanier][$produit_id]);
 
@@ -200,6 +205,31 @@
 			
 
 		 }
+		 //function calculer code promo
+		 public function code($valeur)
+		{
+			$produits=$this->bdd->requette('SELECT * FROM code');
+			foreach ($produits as  $produit)
+			 		{
+
+			 			if($produit->nom==$valeur)
+			 			{
+			 				$_SESSION['prixto']=$_SESSION['prixto']-$_SESSION['prixto']*$produit->taux;
+			 				var_dump($_SESSION['prixto']);
+			 				
+			 			}
+
+
+
+			 			
+			 		}
+
+
+
+
+
+
+		} 
 
 		 //somme d'element panier
 		 public function compterpanier()

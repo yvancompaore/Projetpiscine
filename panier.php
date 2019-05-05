@@ -9,6 +9,16 @@ $bdd = new PDO('mysql:host=localhost;dbname=eceshop', 'root', '');
 
 				$panier->supprimer($_GET['supp'],$_GET['nom'],$_GET['pri']);
 			}
+
+
+	if(isset($_POST['validation']))
+		{
+			
+			$panier->code($_POST['code']);
+
+		}		
+
+
 ?>
 
 <html>
@@ -80,6 +90,23 @@ $bdd = new PDO('mysql:host=localhost;dbname=eceshop', 'root', '');
 			</td>
 
 
+			<form method="POST" action ="">
+				<table>
+					<tr>
+						<td align="right">
+							<input type="text" placeholder="entrer un code promo" name="code"  />
+						</td>
+
+						<td align="right">
+							<input type="submit" name="validation" value="valider">
+						</td>
+
+
+					</tr>
+				</table>
+
+			</form>
+
 			<!--afficher le nombre d'articles -->
 			<td align="right">
 				
@@ -87,6 +114,10 @@ $bdd = new PDO('mysql:host=localhost;dbname=eceshop', 'root', '');
 				
 
 			</td>
+
+			
+
+
 
 
 			<!--lien passer la commande -->
