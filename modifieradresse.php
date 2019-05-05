@@ -69,7 +69,7 @@ if(isset($_SESSION['id']))
 			
 			<ul class="navbar-nav">
 				<li class="Categorie"><a class="nav-link" href="accueil.php">Categorie</a></li>
-				<li class="Flash"><a class="nav-link" href="#">Vente Flash</a></li>
+				<li class="Flash"><a class="nav-link" href="venteflash.php">Vente Flash</a></li>
 				<form method="GET" action="trouver.php">
    				<li><input type="search" id="rechercher"name="q" placeholder="Recherche..." /></li>
    				<li><input type="submit" id="validerrecherche" value="Valider" /><li>

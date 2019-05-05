@@ -17,6 +17,15 @@ echo '<h4 id="icone">'.$client["pseudo"].'<a href="deconnexion.php"><img src="im
 
 }
 
+$random=rand(1,4);
+$requestm = $bdd->query("SELECT * FROM musique");
+$requestl = $bdd->query("SELECT * FROM livre ");
+$requestv = $bdd->query("SELECT * FROM vetement");
+$requests = $bdd->query("SELECT * FROM sport ");
+
+
+
+
 
 
 
@@ -64,14 +73,14 @@ echo '<h4 id="icone">'.$client["pseudo"].'<a href="deconnexion.php"><img src="im
 		</div>
 	</nav>
 
-
 	<div id="itemsvendu">
-		<br>
-		<h3 id="presentationi">Musique</h3>
-     	<?php
-     	$requestm = $bdd->query("SELECT * FROM musique");
-		
-		echo '<table>';
+
+		<?php
+		if($random==1)
+		{
+			echo'<h3 id="presentationi">Musique</h3>';
+
+			echo '<table>';
 		echo'<tr>';
 		while ($datam = $requestm->fetch())
 		{
@@ -87,16 +96,12 @@ echo '<h4 id="icone">'.$client["pseudo"].'<a href="deconnexion.php"><img src="im
 		}
 		echo'</tr>';
 		echo '</table>';
-		?>
+		}
 
-
-		<h3 id="presentationi">Livre</h3>
-
-		<?php
-     	$requestl = $bdd->query("SELECT * FROM livre ");
-		
-
-		echo '<table>';
+		if($random==2)
+		{
+			echo'<h3 id="presentationi">Livre</h3>';
+			echo '<table>';
 		echo'<tr>';
 		while ($datal = $requestl->fetch())
 		{
@@ -111,14 +116,12 @@ echo '<h4 id="icone">'.$client["pseudo"].'<a href="deconnexion.php"><img src="im
 		}
 		echo '</tr>';
 		echo '</table>';
-		?>
+		}
 
-		<h3 id="presentationi">Vetement</h3>
-		<?php
-		$requestv = $bdd->query("SELECT * FROM vetement");
-
-		
-		echo '<table>';
+		if($random==3)
+		{
+			echo'<h3 id="presentationi">Vetement</h3>';
+			echo '<table>';
 		echo '<tr>';
 		while ($datav = $requestv->fetch())
 		{
@@ -135,15 +138,13 @@ echo '<h4 id="icone">'.$client["pseudo"].'<a href="deconnexion.php"><img src="im
 		}
 		echo '</tr>';
 		echo '</table>';
-		?>
+		}
 
 
-		<h3 id="presentationi">Sport</h3>
-		<?php
-		$requests = $bdd->query("SELECT * FROM sport ");
-		
-
-		echo '<table>';
+		if($random==4)
+		{
+			echo'<h3 id="presentationi">Sport</h3>';
+			echo '<table>';
 		echo '<tr>';
 		while ($datas = $requests->fetch())
 		{
@@ -159,11 +160,12 @@ echo '<h4 id="icone">'.$client["pseudo"].'<a href="deconnexion.php"><img src="im
 		}
 		echo'</tr>';
 		echo '</table>';
-		
+		}
 		?>
 
 	</div>
-</div>
+
+		
 
 	
 

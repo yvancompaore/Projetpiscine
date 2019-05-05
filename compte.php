@@ -46,7 +46,7 @@ if(isset($_GET['id']) AND $_GET['id']>0)
 			
 			<ul class="navbar-nav">
 				<li class="Categorie"><a class="nav-link" href="accueil.php">Categorie</a></li>
-				<li class="Flash"><a class="nav-link" href="#">Vente Flash</a></li>
+				<li class="Flash"><a class="nav-link" href="venteflash.php">Vente Flash</a></li>
 				<form method="GET" action="trouver.php">
    				<li><input type="search" id="rechercher"name="q" placeholder="Recherche..." /></li>
    				<li><input type="submit" id="validerrecherche" value="Valider" /><li>
@@ -110,7 +110,7 @@ if(isset($_GET['id']) AND $_GET['id']>0)
 						<tr>
 							<td>
 								<h3> Connexion et parametre de sécurité  </h3>
-									<P> Modifier mdp  ........
+									<P> 
 										<br/>
 										<a href='modifiermdp.php'> <img src="images/modmdp.png" height="30" width="200"></a>
 										</br/>
