@@ -34,7 +34,7 @@ if(isset($_GET['id']) AND $_GET['id']>0)
 
 	<body>
 		<div id="entete">
-<a id ="logo" href="accueil.php"><img src="images/logo.png" height="100" width="100"></a>
+	<a id ="logo" href="accueil.php"><img src="images/logo.png" height="100" width="100"></a>
 	<a id ="panier" href="panier.php"><img src="images/panier.png" height="50" width="50"></a>
 	<p id="num"><?php echo $panier->compterpanier()?></p>
 	<a  id="compte" href="accueilconnexion.php">Compte</a>
@@ -130,6 +130,9 @@ if(isset($_GET['id']) AND $_GET['id']>0)
 	</body>
 
 </html>
+<footer>
+	Copyright &copy, ECESHOP<br> En cas de problème veuillez <a href="mailto:marc.gemayel@edu.ece.fr">contacter l'administrateur</a>
+</footer>
 <?php
 }
 ?>

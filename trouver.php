@@ -170,4 +170,7 @@ echo '<h4 id="icone">'.$client["pseudo"].'<a href="deconnexion.php"><img src="im
 	
 				
 			</body>
+			<footer>
+	Copyright &copy, ECESHOP<br> En cas de problème veuillez <a href="mailto:marc.gemayel@edu.ece.fr">contacter l'administrateur</a>
+</footer>
 	</html>	

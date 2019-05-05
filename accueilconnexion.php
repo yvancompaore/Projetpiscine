@@ -53,7 +53,10 @@ echo '<head>
 	
 
 </body>
-</html>';
+</html>
+<footer>
+	Copyright &copy, ECESHOP<br> En cas de problème veuillez <a href="mailto:marc.gemayel@edu.ece.fr">contacter administrateur</a>
+</footer>';
 if(!empty($_SESSION['id']))
 {
 	header("Location: compte.php?id=".$_SESSION['id']);

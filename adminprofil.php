@@ -132,13 +132,13 @@ if(isset($_GET["ids"]))
 
 		<div id=book class="ajout">
 			
-			<form method="POST" action="">
+			<form method="POST" action="" enctype="multipart/form-data">
             	<input type="text" name="nom" placeholder="nom" />
             	<input type="text" name="prenom" placeholder="prenom" />
             	<input type="text" name="pseudo" placeholder="pseudo" />
             	<input type="text" name="mail" placeholder="mail" />
-            	<input type="text" name="image" placeholder="image de profil" />
-            	<input type="text" name="imagefond" placeholder="image de fond" />
+            	<input type="file" name="image" placeholder="image de profil" />
+            	<input type="file" name="imagefond" placeholder="image de fond" />
             	<input type="submit" name="sendbook" value="Ajouter" />
             </form>	
             <?php
@@ -149,11 +149,19 @@ if(isset($_GET["ids"]))
       		$prenom = isset($_POST["prenom"])?$_POST["prenom"]:"";
       		$pseudo = isset($_POST["pseudo"])?$_POST["pseudo"]:"";
       		$mail = isset($_POST["mail"])?$_POST["mail"]:"";
-      		$image=isset($_POST["image"])?$_POST["image"]:"";
-      		$imagefond=isset($_POST["imagefond"])?$_POST["imagefond"]:"";
+   
+      		$target_dir = "images/";
+			$target_file = $target_dir . basename($_FILES["image"]["name"]);
+			$imageFileType = strtolower(pathinfo($target_file,PATHINFO_EXTENSION));
+			move_uploaded_file($_FILES["image"]["tmp_name"], $target_file);
+
+			$target_dir1 = "images/";
+			$target_file1 = $target_dir1 . basename($_FILES["imagefond"]["name"]);
+			$imageFileType1 = strtolower(pathinfo($target_file1,PATHINFO_EXTENSION));
+			move_uploaded_file($_FILES["imagefond"]["tmp_name"], $target_file1);
 
 			$req = $bdd->prepare('INSERT INTO vendeurs(nom, prenom,pseudo, mail, image,imagefond) VALUES(?,?,?,?,?,?)');
-			$req->execute(array($nom,$prenom,$pseudo,$mail,$image,$imagefond));
+			$req->execute(array($nom,$prenom,$pseudo,$mail,$_FILES["image"]["name"],$_FILES["imagefond"]["name"]));
           	}
           	
 			?>   
@@ -293,3 +301,6 @@ if(isset($_GET["ids"]))
     
  </body>
 </html>
+<footer>
+	Copyright &copy, ECESHOP<br> En cas de problème veuillez <a href="mailto:marc.gemayel@edu.ece.fr">contacter l'administrateur</a>
+</footer>

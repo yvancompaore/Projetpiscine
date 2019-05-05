@@ -58,7 +58,7 @@ echo '<h4 id="icone">'.$client["pseudo"].'<a href="deconnexion.php"><img src="im
 				<li class="Flash"><a class="nav-link" href="#">Vente Flash</a></li>
 				<form method="GET" action="trouver.php">
    				<li><input type="search" id="rechercher"name="q" placeholder="Recherche..." /></li>
-   				<li><input type="submit" id="validerrecherche" value="Valider" /><li>
+   				<li><input type="submit" id="validerrecherche" value="Valider" /></li>
 				</form>
 			</ul>
 		</div>
@@ -83,6 +83,7 @@ echo '<h4 id="icone">'.$client["pseudo"].'<a href="deconnexion.php"><img src="im
 		echo $datam["prix"].'€<br>';
 		echo'<a href="ajoutpanier.php?idm='.$datam["id"].'"><button>ajouter au panier</button></a>';
 		echo'</td>';
+			
 		}
 		echo'</tr>';
 		echo '</table>';
@@ -161,18 +162,13 @@ echo '<h4 id="icone">'.$client["pseudo"].'<a href="deconnexion.php"><img src="im
 		
 		?>
 
-
-
-
-
-
-
-
-
 	</div>
 </div>
 
 	
 
 </body>
+<footer>
+	Copyright &copy, ECESHOP<br> En cas de problème veuillez <a href="mailto:marc.gemayel@edu.ece.fr">contacter l'administrateur</a>
+</footer>
 </html>

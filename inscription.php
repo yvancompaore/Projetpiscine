@@ -246,5 +246,8 @@ if(isset($_POST['validation']))
 			?>
 		</div>
 	</body>
+	<footer>
+	Copyright &copy, ECESHOP<br> En cas de problème veuillez <a href="mailto:marc.gemayel@edu.ece.fr">contacter l'administrateur</a>
+</footer>
 
 </html>

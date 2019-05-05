@@ -9,20 +9,6 @@ $bdd = new PDO('mysql:host=localhost;dbname=eceshop', 'root', '');
 
 				$panier->supprimer($_GET['supp'],$_GET['nom'],$_GET['pri']);
 			}
-if(isset($_SESSION['id']))
-{
-$req=$bdd->prepare("SELECT * FROM acheteurs WHERE id=?");
-$req->execute(array($_SESSION['id']));
-$client=$req->fetch();
-
-
-
-echo '<h4 id="icone">'.$client["pseudo"].'<a href="deconnexion.php"><img src="images/deconnexion.png" with="25" height="25"/></a></h4>';
-
-
-}
-
-
 ?>
 
 <html>
@@ -105,11 +91,16 @@ echo '<h4 id="icone">'.$client["pseudo"].'<a href="deconnexion.php"><img src="im
 
 			<!--lien passer la commande -->
 			<td align="right">
+
 				<?php
 				if($_SESSION['nombrearticle']!=0)
 				{ ?>
-					<p>Passez la commande<a href="panier.php" ><img id="imageitem" src="images/camion"width="50" height="50"></a></p>
+					<p>Passez la commande<a href="payement.php" ><img id="imageitem" src="images/camion"width="50" height="50"></a></p>
 				<?php }?>
+				
+
+
+
 				
 
 			</td></tr>
@@ -121,4 +112,7 @@ echo '<h4 id="icone">'.$client["pseudo"].'<a href="deconnexion.php"><img src="im
 
 
 </body>
+<footer>
+	Copyright &copy, ECESHOP<br> En cas de problème veuillez <a href="mailto:marc.gemayel@edu.ece.fr">contacter l'administrateur</a>
+</footer>
 </html>

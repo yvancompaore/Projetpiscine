@@ -149,12 +149,12 @@ if(isset($_GET["ids"]))
 
 		<div id=book class="ajout">
 			
-			<form method="POST" action="">
+			<form method="POST" action="" enctype="multipart/form-data">
             	<input type="text" name="titre" placeholder="titre" />
             	<input type="text" name="auteur" placeholder="auteur" />
             	<input type="text" name="editeur" placeholder="editeur" />
             	<input type="text" name="prix" placeholder="prix" />
-            	<input type="text" name="couverture" placeholder="couverture" />
+            	<input type="file" name="couverture" placeholder="couverture" />
             	<input type="submit" name="sendbook" value="vendre" />
             </form>	
             <?php
@@ -166,10 +166,13 @@ if(isset($_GET["ids"]))
       		$editeur = isset($_POST["editeur"])?$_POST["editeur"]:"";
       		$vendu = $vendeur["id"];
       		$prix = isset($_POST["prix"])?$_POST["prix"]:"";
-      		$couverture=isset($_POST["couverture"])?$_POST["couverture"]:"";
-
+  
+			$target_dir = "images/";
+			$target_file = $target_dir . basename($_FILES["couverture"]["name"]);
+			$imageFileType = strtolower(pathinfo($target_file,PATHINFO_EXTENSION));
+			move_uploaded_file($_FILES["couverture"]["tmp_name"], $target_file);
 			$req = $bdd->prepare('INSERT INTO livre(titre, auteur,editeur,vendeur_id, prix, couverture) VALUES(?,?,?,?,?,?)');
-			$req->execute(array($titre,$auteur,$editeur,$vendu,$prix,$couverture));
+			$req->execute(array($titre,$auteur,$editeur,$vendu,$prix,$_FILES["couverture"]["name"]));
           	}
           	
 			?>   
@@ -179,13 +182,15 @@ if(isset($_GET["ids"]))
      	</div>
          
     <div id=music class="ajout">
-    	<form method="POST" action="">
+    	<form method="POST" action="" enctype="multipart/form-data">
             	<input type="text" name="titremusic" placeholder="titre" />
             	<input type="text" name="groupe" placeholder="groupe" />
             	<input type="text" name="album" placeholder="album" />
             	<input type="text" name="prix" placeholder="prix" />
-            	<input type="text" name="pochette" placeholder="pochette" />
-            	<input type="submit" name="sendmusic" value="vendre" />
+            	<input type="file" name="pochette" placeholder="pochette" />
+            	<input type="submit" name="sendmusic" value="vendre" />  
+          </form>
+     
          <?php
 
           	if(isset($_POST['sendmusic']))
@@ -195,25 +200,35 @@ if(isset($_GET["ids"]))
       		$album = isset($_POST["album"])?$_POST["album"]:"";
       		$vendu = $vendeur["id"];
       		$prix = isset($_POST["prix"])?$_POST["prix"]:"";
-      		$pochette=isset($_POST["pochette"])?$_POST["pochette"]:"";
-
+      		$target_dir = "images/";
+			$target_file = $target_dir . basename($_FILES["pochette"]["name"]);
+			$imageFileType = strtolower(pathinfo($target_file,PATHINFO_EXTENSION));
+			move_uploaded_file($_FILES["pochette"]["tmp_name"], $target_file);
 			$req = $bdd->prepare('INSERT INTO musique(titre, groupe,album,vendeur_id, prix, pochette) VALUES(?,?,?,?,?,?)');
-			$req->execute(array($titrem,$groupe,$album,$vendu,$prix,$pochette));	
+			$req->execute(array($titrem,$groupe,$album,$vendu,$prix,$_FILES["pochette"]["name"]));	
           	}
           	
 			?> 
 
 
-         </form>
-     </div>
+       </div>
     <div id=clothes class="ajout">
-    	<form method="POST" action="">
+    	<form method="POST" action="" enctype="multipart/form-data">
             	<input type="text" name="type" placeholder="type" />
-            	<input type="text" name="genre" placeholder="genre" />
+            	<select name="genre">
+					<option value="Homme">Homme</option>
+					<option value="Femme">Femme</option>
+				</select>
             	<input type="text" name="couleur" placeholder="couleur" />
-            	<input type="text" name="taille" placeholder="taille" />
+            	<select name="taille">
+					<option value="S">S</option>
+					<option value="M">M</option>
+					<option value="L">L</option>
+					<option value="XL">XL</option>
+					<option value="XXL">XXL</option>
+				</select>
             	<input type="text" name="prix" placeholder="prix" />
-            	<input type="text" name="photo" placeholder="photo" />
+            	<input type="file" name="photo" placeholder="photo" />
             	<input type="submit" name="sendclothes" value="vendre" />
          </form>
          <?php
@@ -221,16 +236,21 @@ if(isset($_GET["ids"]))
           	if(isset($_POST['sendclothes']))
           	{
           	$type = isset($_POST["type"])?$_POST["type"]:"";
-      		$genre = isset($_POST["genre"])?$_POST["genre"]:"";
+          	$selectgenre = $_POST['genre'];
+      		$genre =$selectgenre;
       		$couleur = isset($_POST["couleur"])?$_POST["couleur"]:"";
       		$vendu = $vendeur["id"];
-      		$taille = isset($_POST["taille"])?$_POST["taille"]:"";
+      		$selecttaille=$_POST['taille'];
+      		$taille = $selecttaille;
       		$prix=isset($_POST["prix"])?$_POST["prix"]:"";
-      		$photo=isset($_POST["photo"])?$_POST["photo"]:"";
+      		$target_dir = "images/";
+			$target_file = $target_dir . basename($_FILES["photo"]["name"]);
+			$imageFileType = strtolower(pathinfo($target_file,PATHINFO_EXTENSION));
+			move_uploaded_file($_FILES["photo"]["tmp_name"], $target_file);
       		
 
 			$req = $bdd->prepare('INSERT INTO vetement(type,genre,couleur, taille,vendeur_id,prix, photo) VALUES(?,?,?,?,?,?,?)');
-			$req->execute(array($type,$genre,$couleur,$taille,$vendu,$prix,$photo));	
+			$req->execute(array($type,$genre,$couleur,$taille,$vendu,$prix,$_FILES["photo"]["name"]));	
           	}
           	
 		?>
@@ -239,11 +259,11 @@ if(isset($_GET["ids"]))
 
      </div>
      <div id=sport class="ajout">
-    	<form method="POST" action="">
+    	<form method="POST" action="" enctype="multipart/form-data">
     			<input type="sport" name="sport" placeholder="sport" />
             	<input type="text" name="accesoire" placeholder="accesoire" />
             	<input type="text" name="prix" placeholder="prix" />
-            	<input type="text" name="photo" placeholder="photo" />
+            	<input type="file" name="photo" placeholder="photo" />
             	<input type="submit" name="sendsport" value="vendre" />
             	
          </form>
@@ -255,11 +275,14 @@ if(isset($_GET["ids"]))
       		$accesoire = isset($_POST["accesoire"])?$_POST["accesoire"]:"";
       		$vendu = $vendeur["id"];
       		$prix=isset($_POST["prix"])?$_POST["prix"]:"";
-      		$photo=isset($_POST["photo"])?$_POST["photo"]:"";
+      		$target_dir = "images/";
+			$target_file = $target_dir . basename($_FILES["photo"]["name"]);
+			$imageFileType = strtolower(pathinfo($target_file,PATHINFO_EXTENSION));
+			move_uploaded_file($_FILES["photo"]["tmp_name"], $target_file);
       		
 
 			$req = $bdd->prepare('INSERT INTO sport(sport,accesoire,vendeur_id,prix, photo) VALUES(?,?,?,?,?)');
-			$req->execute(array($sport,$accesoire,$vendu,$prix,$photo));	
+			$req->execute(array($sport,$accesoire,$vendu,$prix,$_FILES["photo"]["name"]));	
           	}
           	
 		?>
@@ -369,6 +392,9 @@ if(isset($_GET["ids"]))
 
      </div>
  </body>
+ <footer>
+	Copyright &copy, ECESHOP<br> En cas de problème veuillez <a href="mailto:marc.gemayel@edu.ece.fr">contacter l'administrateur</a>
+</footer>
 </html>
 
 

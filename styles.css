@@ -48,7 +48,7 @@ body {background: #f2f6e9;}/*---navigation bar ---*/
   border: 2px solid   #880617;
   position: absolute;
     right: 550;
-    top:200;
+    top:300;
     
 
 }
@@ -220,4 +220,27 @@ margin-bottom: 0;
 {
   font-size: 30px;
   font-family : Impact, fantasy;
+}
+
+#payement
+{
+  width: 600;
+  border:4px solid black;
+}
+#boutonpayer
+{
+  position:absolute;
+    left:850;
+    top:350;
+}
+
+footer
+{
+  width:600px;
+  background-color: #880617;
+ position:absolute;
+    bottom: -500;
+    right: 100;
+    text-align: center;
+    color:#f2f6e9;
 }

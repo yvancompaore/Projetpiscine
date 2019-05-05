@@ -41,6 +41,7 @@
 					$_SESSION['paniersport']=array();
 				}
 
+				
 				if(!isset($_SESSION['nombrearticle']))
 				{
 					$_SESSION['nombrearticle']=0;
@@ -85,6 +86,7 @@
 				//var_dump($_SESSION['nombrearticle']);
 		}
 
+
 		
 
 		//fonction pour supprimer 
@@ -96,6 +98,66 @@
 			$_SESSION['prixto']=$_SESSION['prixto']- $prix*$_SESSION[$nompanier][$produit_id];
 			//var_dump($_SESSION['prixto']);
 			unset($_SESSION[$nompanier][$produit_id]);
+
+		}
+
+		//fonction supprimer article de la bd
+		public function supprimerarticles($nompanier,$local)
+		{
+			if(isset($_SESSION[$nompanier]))
+			{
+				$idc=array_keys($_SESSION[$nompanier]);
+				//on les separes
+				$implo=implode(',',$idc);
+				
+
+				if(!empty($implo))
+
+				{
+
+					
+					$produits=$this->bdd->requette('SELECT * FROM ' .$local.'  WHERE id IN ('.implode(',',$idc).')');
+
+					foreach ($produits as  $produit)
+			 		{
+			 			
+
+			 			
+			 			$bdde = new PDO('mysql:host=localhost;dbname=eceshop', 'root', '');
+
+			 			$requestl =$bdde->prepare("DELETE FROM ".$local." WHERE id=?");
+						$requestl->execute(array($produit->id));
+
+					
+
+
+			 			
+			 		}
+
+
+					
+
+				}
+
+			}
+
+
+		}
+
+
+		public function vider()
+		{
+			unset($_SESSION['paniermusic']);
+			unset($_SESSION['panierlivre']);
+			unset($_SESSION['paniervetement']);
+			unset($_SESSION['paniersport']);
+			unset($_SESSION['panier']);
+			$_SESSION['nombrearticle']=0;
+			$_SESSION['prixto']=0;
+			header('Location: accueil.php');
+			
+
+
 
 		}
 
@@ -209,7 +271,7 @@
 											echo'</tr>';
 											echo '</table>';
 											$requestl = $bdd->prepare("SELECT * FROM livre WHERE id=?");
-												$requestl->execute(array($produit->id));
+											$requestl->execute(array($produit->id));
 
 												echo '<table>';
 												echo'<tr>';
